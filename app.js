@@ -1,5 +1,11 @@
-const { User, Pdf, ManipulationLog } = require("./models");
 const sequelize = require("./config/database");
+const {
+  User,
+  Pdf,
+  ManipulationLog,
+  PdfContent,
+  Notification,
+} = require("./models");
 
 sequelize
   .sync({ force: false })

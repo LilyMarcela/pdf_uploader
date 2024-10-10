@@ -1,5 +1,5 @@
 // models/ManipulationLog.js
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, UUIDV4 } = require("sequelize");
 const sequelize = require("../config/database");
 const User = require("./User");
 const Pdf = require("./Pdf");
@@ -9,9 +9,9 @@ class ManipulationLog extends Model {}
 ManipulationLog.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: UUIDV4,
       primaryKey: true,
-      autoIncrement: true,
     },
     pdfId: {
       type: DataTypes.INTEGER,
@@ -53,6 +53,7 @@ ManipulationLog.init(
   },
   {
     sequelize,
+    timestamps: true,
     modelName: "ManipulationLog",
     tableName: "manipulation_logs",
   }
